@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>CSS Radial Popup Menu Demo</title>
+<link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<style>
+body{
+   font-family: "Quicksand",sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+}
+
+#menu {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -75px 0 0 -75px;
+    list-style: none;
+    font-size: 200%;
+}
+
+.menu-button {
+    opacity: 0;
+    z-index: -1;
+}
+
+.menu-button {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    background: #424242;
+    background-size: 100%;
+    overflow: hidden;
+    text-decoration: none;
+    line-height: 150px;
+    color: #fff;
+}
+
+#menu:not(:target)>a:first-of-type,
+#menu:target>a:last-of-type {
+    opacity: 1;
+    z-index: 1;
+}
+
+#menu:not(:target)>.icon-plus:before,
+#menu:target>.icon-minus:before {
+    opacity: 1;
+}
+
+.menu-item {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 55%;
+    line-height: 5px;
+    top: 50%;
+    margin: -50px 0 0 -50px;
+    border-radius: 50%;
+    background-color: #424242;
+    transform: translate(0px, 0px);
+    transition: transform 500ms;
+    z-index: -2;
+    transition: .5s;
+}
+
+.menu-item:hover{
+opacity: 0.5;
+  box-shadow: 0 5px 10px black;
+}
+
+
+.menu-item a {
+    color: #fff;
+    position: relative;
+    top: 30%;
+    left: 0;
+    text-decoration: none;
+}
+
+#menu:target>.menu-item:nth-child(6) {
+    transform: rotate(60deg) translateY(-150px) rotate(300deg);
+    transition-delay: 0s;
+}
+
+#menu:target>.menu-item:nth-child(5) {
+    transform: rotate(20deg) translateY(-155px) rotate(-20deg);
+    transition-delay: 0.1s;
+}
+
+#menu:target>.menu-item:nth-child(3) {
+    transform: rotate(-20deg) translateY(-155px) rotate(20deg);
+    transition-delay: 0.2s;
+}
+
+#menu:target>.menu-item:nth-child(4) {
+    transform: rotate(-60deg) translateY(-150px) rotate(60deg);
+    transition-delay: 0.3s;
+}
+
+.content{
+  position: absolute;
+  text-align: center;
+  margin: -10px 0 0 -30px;
+  top: 70%;
+  left: 50%;
+  font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+    <div id="css-script-menu">
+  <div class="css-script-center">
+    <ul>
+      <li><a href="https://www.cssscript.com/radial-circle-popup-menu-css/">Download</a></li>
+      <li><a href="https://www.cssscript.com/">Back To CSS Script</a></li>
+    </ul>
+    <div class="css-script-ads">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- CSSScript Demo Page -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-2783044520727903"
+     data-ad-slot="3025259193"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+    <div class="css-script-clear"></div>
+  </div>
+</div>
+<div class="container">
+     <ul id="menu">
+            <a class="menu-button icon-plus" href="#menu" title="Show navigation"><span class="fas fa-share-alt"></span></a>
+            <a class="menu-button icon-minus" href="#0" title="Hide navigation"><span class="fas fa-share-alt"></span></a>
+            <li class="menu-item">
+                <a href="#menu">
+                    <span class="fab fa-github"></span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#menu">
+                    <span class="fab fa-facebook"></span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#menu">
+                    <span class="fab fa-twitter"></span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="#menu">
+                    <span class="fab fa-instagram"></span>
+                </a>
+            </li>
+        </ul>
+
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46156385-1', 'cssscript.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

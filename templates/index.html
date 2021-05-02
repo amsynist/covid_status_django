@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Covidnow</title>
+</head>
+
+
+<body>
+
+
+    <!------ Include the above in your HEAD tag ---------->
+
+    <header class="header">
+
+        <div class="container">
+            <div class="row">
+                <br />
+                <div class="col text-center">
+                    <h1> <span style="color:red;"><strong>COVID-19</strong></span> STATUS</h1>
+                    <p>Live Stats of Covid-19 </p>
+                </div>
+
+
+            </div>
+    </header>
+    <div class="container ">
+        <div class="row">
+            <br />
+            <div class="col text-center justify-content-center">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <select class="form-select" name="countryselection">
+                        <option value="" disabled selected>Select a State</option>
+                        {% for country in list1 %}
+
+                        <option>{{country}}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    STATE
+                    <h2 class="country"> {{country}}</h2>
+
+                    <input class="btn btn-success btn-lg" type="submit" value="Search">
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cp" class="container " style="margin-top:5rem;">
+        <div class="row text-center ">
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="counter">
+                        <i class="ri-hospital-line" style="color: red;"></i>
+                        <h2 class="timer count-title count-number" data-to="{{deaths}}" data-speed="1500"></h2>
+                        <p class="count-text "><strong>DEATHS</strong></p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="counter">
+                        <i class="ri-line-chart-fill" style="color: green;"></i>
+                        <h2 class="timer count-title count-number" data-to="{{active}}" data-speed="1500"></h2>
+                        <p class="count-text "><strong>ACTIVE</strong></p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="counter">
+                        <i class="ri-add-box-line " style="color:rgb(7, 182, 252);"></i>
+                        <h2 class="timer count-title count-number" data-to="{{new}}" data-speed="1500"></h2>
+                        <p class="count-text "><strong>NEW</strong></p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="counter">
+                        <i class="ri-heart-pulse-fill" style="color:rgb(255, 168, 7);"></i>
+                        <h2 class="timer count-title count-number" data-to="{{recovered}}" data-speed="1500"></h2>
+                        <p class="count-text "><strong>RECOVERED</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        (function ($) {
+            $.fn.countTo = function (options) {
+                options = options || {};
+
+                return $(this).each(function () {
+                    // set options for current element
+                    var settings = $.extend({}, $.fn.countTo.defaults, {
+                        from: $(this).data('from'),
+                        to: $(this).data('to'),
+                        speed: $(this).data('speed'),
+                        refreshInterval: $(this).data('refresh-interval'),
+                        decimals: $(this).data('decimals')
+                    }, options);
+
+                    // how many times to update the value, and how much to increment the value on each update
+                    var loops = Math.ceil(settings.speed / settings.refreshInterval),
+                        increment = (settings.to - settings.from) / loops;
+
+                    // references & variables that will change with each update
+                    var self = this,
+                        $self = $(this),
+                        loopCount = 0,
+                        value = settings.from,
+                        data = $self.data('countTo') || {};
+
+                    $self.data('countTo', data);
+
+                    // if an existing interval can be found, clear it first
+                    if (data.interval) {
+                        clearInterval(data.interval);
+                    }
+                    data.interval = setInterval(updateTimer, settings.refreshInterval);
+
+                    // initialize the element with the starting value
+                    render(value);
+
+                    function updateTimer() {
+                        value += increment;
+                        loopCount++;
+
+                        render(value);
+
+                        if (typeof (settings.onUpdate) == 'function') {
+                            settings.onUpdate.call(self, value);
+                        }
+
+                        if (loopCount >= loops) {
+                            // remove the interval
+                            $self.removeData('countTo');
+                            clearInterval(data.interval);
+                            value = settings.to;
+
+                            if (typeof (settings.onComplete) == 'function') {
+                                settings.onComplete.call(self, value);
+                            }
+                        }
+                    }
+
+                    function render(value) {
+                        var formattedValue = settings.formatter.call(self, value, settings);
+                        $self.html(formattedValue);
+                    }
+                });
+            };
+
+            $.fn.countTo.defaults = {
+                from: 0, // the number the element should start at
+                to: 0, // the number the element should end at
+                speed: 1000, // how long it should take to count between the target numbers
+                refreshInterval: 100, // how often the element should be updated
+                decimals: 0, // the number of decimal places to show
+                formatter: formatter, // handler for formatting the value before rendering
+                onUpdate: null, // callback method for every time the element is updated
+                onComplete: null // callback method for when the element finishes updating
+            };
+
+            function formatter(value, settings) {
+                return value.toFixed(settings.decimals);
+            }
+        }(jQuery));
+
+        jQuery(function ($) {
+            // custom formatting example
+            $('.count-number').data('countToOptions', {
+                formatter: function (value, options) {
+                    return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
+                }
+            });
+
+            // start all the timers
+            $('.timer').each(count);
+
+            function count(options) {
+                var $this = $(this);
+                options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+                $this.countTo(options);
+            }
+        });
+    </script>
+    <footer class="nb-footer">
+        <section class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p> A Python/Django Web App By - <a href="http://amsynist.github.io">Prav!n
+                                &nbsp;&nbsp;<img class="zero" src="media/zero.svg"></a>
+                        </p>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+        </section>
+
+
+        <div class="row justify-content-end">
+            <div class=" col-md-4 ">
+                <p> Source-Code/Git Repo <a href="http://www.github.com/" target="_blank"><i
+                            class="ri-github-fill"></i></a>
+                </p>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+    </footer>
+
+
+</body>
+
+</html>

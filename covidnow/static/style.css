@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body,
+html {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%);
+
+}
+
+h1 {
+
+  text-shadow: 0px 1px 1px #4d4d4d;
+  color: #222;
+  font: 80px;
+  margin-top: 0.5rem !important;
+  margin-bottom: 1.4rem !important;
+}
+
+.header>div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>p:nth-child(2) {
+  margin-top: -1.4rem !important;
+}
+
+.counter {
+  padding: 20px 0;
+
+}
+
+.count-title {
+  font-size: 20px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.count-text {
+  font-size: 13px;
+  font-weight: normal;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.fa-2x {
+  margin: 0 auto;
+  float: none;
+  display: table;
+  color: #4ad1e5;
+  font-size: 50px;
+}
+
+.counter {
+  font-size: 3rem;
+  padding-top: -5rem;
+
+
+}
+
+.ri-search-2-line {
+  display: block;
+  font-size: 29px !important;
+  margin-left: 1px;
+  padding: 20px 30px;
+
+}
+
+.country {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 20;
+  font-family: "Helvetica Neue";
+  margin-bottom: 9px;
+  padding-bottom: 5px;
+
+}
+
+footer.nb-footer .copyright {
+  text-decoration: none !important;
+  display: flex;
+  background-color: #000000;
+  background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
+  margin: 30px 0px;
+  padding: 15px 20px;
+  color: #fff;
+  text-align: center;
+  justify-content: center;
+
+}
+
+footer.nb-footer .copyright p {
+
+  margin: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  letter-spacing: 2px;
+  padding: 0;
+}
+
+.copyright>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1) {
+  text-shadow: 0px 1px 1px #4d4d4d;
+  text-decoration: none;
+  font-family: 'Bebas Neue', cursive;
+  color: white;
+  letter-spacing: 5px;
+  padding-top: 3rem;
+}
+
+.copyright>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)>p:nth-child(1)>a:nth-child(1):hover {
+  color: rgb(0, 153, 255);
+}
+
+.zero {
+  margin-bottom: 0px;
+}
+
+.ri-github-fill {
+  font-size: 30px;
+  text-decoration: none !important;
+  color: black;
+  padding: 0 20px;
+}
